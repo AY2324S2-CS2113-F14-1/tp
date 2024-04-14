@@ -1,6 +1,8 @@
 @startuml
 skinparam Style strictuml
 
+box Execute Add Event Command
+
 participant ":Logic" AS Logic
 participant ":AddEventCommand" AS AddEventCommand
 
@@ -37,4 +39,6 @@ AddEventCommand --> Logic
 deactivate AddEventCommand
 
 destroy AddEventCommand
+
+endbox
 @enduml

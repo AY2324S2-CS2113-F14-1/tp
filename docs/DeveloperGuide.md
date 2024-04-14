@@ -132,8 +132,10 @@ The UML diagram below shows the main relationships between the classes in the ca
 
 <div style="page-break-after: always;"></div>
 
-The Following sequence diagram shows how a user input is processed to add, delete or list the categories:
+The following sequence diagram shows how a user input is processed to add, delete or list the categories:
 ![category_parse_sequence.png](images/category_sequence.png)
+**NOTE** : The activation bars do not render properly due to PUML restrictions. 
+
 <br>
 **User input category parsing sequence**
 1. The user enters a command to add a category
@@ -195,6 +197,8 @@ The `EventManager` class is responsible for aggregate operations on the events.
 The UMl diagram below shows the relationships between the classes in the event feature 
 (irrelevant methods are omitted) <br>
 ![img.png](images/Event_class.png)
+
+**NOTE** Some multiplicities overlap with the arrows due to PlantUML restrictions
 
 The `EventExpenseManager` class mainly interacts with the `EventManager` and `ExpenseManager` classes 
 via the `getExpense` and `getEvent` methods, 
@@ -310,13 +314,12 @@ public class TerminalHandler {
     private LineReader lineReader;
 
     public TerminalHandler() {
+        System.setProperty("org.jline.terminal.exec.redirectPipeCreationMode", "native");
         try {
-            terminal = TerminalBuilder.builder().system(true).build();
-            lineReader = LineReaderBuilder.builder()
-                    .terminal(terminal).build();
+            terminal = TerminalBuilder.builder().system(true).dumb(true).build();
+            lineReader = LineReaderBuilder.builder().terminal(terminal).build();
         } catch (Exception e) {
-            Logger logger = 
-                    Logger.getLogger(TerminalHandler.class.getName());
+            Logger logger = Logger.getLogger(TerminalHandler.class.getName());
             logger.severe("Error creating terminal: " + e.getMessage());
             System.exit(1);
         }
@@ -338,7 +341,7 @@ public class TerminalHandler {
 **Target user profile**
 
 This project is designed to cater to the needs of university students who encounter the challenge of managing a myriad of expenses across various categories.
-university students also do not have an extreme amount of expenses and a large budget to track, so having a simple CLI application to track expenses would be sufficient,
+University students also do not have an extreme amount of expenses and a large budget to track, so having a simple CLI application to track expenses would be sufficient,
 rather than a large scale application with a database management system.
 
 **Value proposition**
@@ -349,7 +352,7 @@ valuable resource for university students. The application also allows for the c
 and classification of expenses into events, which is useful for students who need to track their spending habits.
 The application also allows for the import and export of data from files, which is useful for students who use multiple devices,
 but do not want to reveal their data via the internet.
-For experienced CLI users, they can enter their expenses faster compared to GUI applications
+For experienced CLI users, they can enter their expenses faster compared to GUI applications.
 
 <div style="page-break-after: always;"></div>
 
@@ -365,15 +368,12 @@ For experienced CLI users, they can enter their expenses faster compared to GUI 
 | v2.0 | university student | retrieve spending based on time periods | track important spending days |
 | v2.0 | new user | see instructions on how to use the CLI commands | understand how to use the application |
 | v2.0 | student | search and filter expenses based on various criteria such as dates, keywords and categories | track my spending more accurately |
-| v2.0 | student frequently using excel | import/export existing data from spreadsheet/csv | record existing information |
 | v2.0 | student | log expenses based on their categories | manage my spending habits within each category |
 | v2.0 | university committee member | classify expenses in groups of events | check expenses of events organized |
 
 <div style="page-break-after: always;"></div>
 
 ### Use Cases
-
-For all use cases below, the System is `Brokeculator` and the Actor is the `user`, unless specified otherwise.
 
 **Use case: Add a category**
 
@@ -564,15 +564,14 @@ For all use cases below, the System is `Brokeculator` and the Actor is the `user
 
 ### Non-Functional Requirements
 1. **OS requirements**: The application should be able to run on any mainstream OS with Java 11 installed
-2. **Performance**: The application should be able to handle any user input and provide feedback within 2 seconds
+2. **Performance**: The application should be able to handle any user input and provide feedback within 3 seconds
 3. **Reliability**: The application should be able to handle illegal user input without crashing, and provide feedback to the user
-4. **Usability**: The application should be easy to use for users familiar with CLI applications, instructions should be clear,
-and what the application carried out based on user input should be clear to the user
-5. **Volatility**: Since the application data is stored in txt files, there is a risk of users accidentally modifying the data. The application should be able to handle corrupted data files and provide feedback to the user
-6. **Persistence**: As users can terminate the application quickly via terminal commands at any time, the application should be able to save the data to the files before termination
-7. **Scalability**: The application should be able to handle up to 10000 expenses and events without crashing
-8. **Security**: The application should not request any personal information from the user, and the data should be stored locally in the user's device
-9. **Stability**: The application should be able to reject illegal user input such as invalid dates and negative amounts, and provide feedback to the user
+4. **Volatility**: As the application data is stored in txt files, there is a risk of users accidentally modifying the data. The application should be able to handle corrupted data files and provide feedback to the user
+5. **Persistence**: As users can terminate the application quickly via terminal commands at any time, the application should be able to save the data to the files before termination
+6. **Scalability**: The application should be able to handle up to 10000 expenses and events without crashing
+7. **Security**: The application should not request any personal information from the user, and the data should be stored locally in the user's device
+8. **Stability**: The application should be able to reject illegal user input such as invalid dates and negative amounts, and provide feedback to the user
+9. **Start-up Performance**: The application should take no more than 5 seconds to start 
 
 ### Glossary
 
@@ -813,7 +812,8 @@ upon typing `viewEvent /i 3` and pressing enter, the user should see the followi
 eventtest3 (test 3)
 Event has 1 expenses. 
 Total amount spent = $100.00
-test3 $100.00 (Friday, 12 January 2024) [CAT3]
+
+3. test3 $100.00 (Friday, 12 January 2024) [CAT3]
 ------------------------------------
 ```
 

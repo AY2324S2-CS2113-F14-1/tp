@@ -33,7 +33,8 @@ public class HelpCommand extends Command {
             + System.lineSeparator()
             + "Notes about the command format:" + System.lineSeparator()
             + "\t1. <word> are to be provided by the user without the <>" + System.lineSeparator()
-            + "\t2. [/w word] are optional arguments";
+            + "\t2. [/w word] are optional arguments" + System.lineSeparator()
+            + "\t3. <date> should be of the format DD-MM-YYYY";
 
     @Override
     public void execute(Dashboard dashboard, UI ui) {
