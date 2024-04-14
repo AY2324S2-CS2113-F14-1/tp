@@ -25,6 +25,11 @@ public class Event implements Saveable {
         this.expenses = new ArrayList<>();
     }
 
+    public static boolean hasFileDelimiters (String userInput) {
+        return userInput.contains(NAME_KEYWORD.keywordMarker) ||
+                userInput.contains(DESCRIPTION_KEYWORD.keywordMarker);
+    }
+
     /**
      * Checks if the event has a particular expense.
      * 

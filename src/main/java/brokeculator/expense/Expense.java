@@ -56,6 +56,13 @@ public class Expense implements Saveable {
         this.category = category == null ? null : category.trim().toUpperCase();
     }
 
+    public static boolean hasFileDelimiters (String userInput) {
+        return userInput.contains(DESCRIPTION_KEYWORD.keywordMarker) ||
+                userInput.contains(DATE_KEYWORD.keywordMarker) ||
+                userInput.contains(AMOUNT_KEYWORD.keywordMarker) ||
+                userInput.contains(CATEGORY_KEYWORD.keywordMarker);
+    }
+
     /**
      * Returns the description of the expense.
      */
