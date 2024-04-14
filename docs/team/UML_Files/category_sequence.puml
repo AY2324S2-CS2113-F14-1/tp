@@ -6,8 +6,8 @@ box Category Command Logic
 participant ":Logic   " as logic
 participant "<<class>>\nCategoryParser" as CategoryParser
 participant "<<class>>\nCategory" as Category
-participant ":CategoryCommand" as CategoryCommand
-participant ":InvalidCommand" as InvalidCommand
+participant "commandToExecute:CategoryCommand" as CategoryCommand
+participant "commandToExecute:InvalidCommand" as InvalidCommand
 participant "<<class>>\nGeneralInputParser" as generalinputparser
 activate logic
 logic -> generalinputparser : getCommandFromUserInput(userInput:String)
@@ -19,18 +19,18 @@ alt isValidAddCommand || isValidDeleteCommand || isValidListCommand
     create CategoryCommand
     CategoryParser -> CategoryCommand : new CategoryCommand(...)
     activate CategoryCommand
-    CategoryCommand -[dashed]-> CategoryParser: commandToExecute:Command
+    CategoryCommand -[dashed]-> CategoryParser: commandToExecute
     deactivate CategoryCommand
 else default
     create InvalidCommand
     CategoryParser -> InvalidCommand : new InvalidCommand()
     activate InvalidCommand
-    InvalidCommand -[dashed]-> CategoryParser: commandToExecute:InvalidCommand
+    InvalidCommand -[dashed]-> CategoryParser: commandToExecute
     deactivate InvalidCommand
 end
-CategoryParser -[dashed]-> generalinputparser : commandToExecute:Command
+CategoryParser -[dashed]-> generalinputparser : commandToExecute
 deactivate CategoryParser
-generalinputparser -[dashed]-> logic : commandToExecute:Command
+generalinputparser -[dashed]-> logic : commandToExecute
 deactivate generalinputparser
 alt CategoryCommand
     logic -> CategoryCommand : execute(dashboard, ui)
