@@ -109,9 +109,20 @@ public class FileManager {
         }
     }
 
+    private void handleDirDeletion() {
+        try {
+            createFiles();
+            this.hasFileErrors = false;
+        } catch (Exception e) {
+            this.hasFileErrors = true;
+        }
+    }
+
     private void save(String data, File file) {
         try {
+            handleDirDeletion();
             if (this.hasFileErrors) {
+                printDataLossWarning();
                 return;
             }
             FileWriter fileWriter = new FileWriter(file);
