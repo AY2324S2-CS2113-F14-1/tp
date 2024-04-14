@@ -169,7 +169,7 @@ currently tracked.
 The following sequence diagram shows how user input (containing the keyword `summarise`) is parsed to produce a summary 
 of expenses in accordance with user specifications:
 
-![img.png](images/summarise_sequence.png)
+![img.png](images/Summarise.png)
 
 **User input parsing sequence**
 1. The user enters a command to summarise expenses, which is caught by the `UI` class and returned to the `Logic` class
