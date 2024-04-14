@@ -50,7 +50,7 @@ experienced CLI users, they can enter their expenses faster compared to GUI appl
 
 > **NOTE**
 > 1. The commands are case-insensitive
-> 2. The DATE format is `dd-MM-yyyy`
+> 2. The DATE format is `DD-MM-YYYY`
 > 3. Words in `UPPER_CASE` are parameters to be supplied by the user
 > 4. Parameters in square brackets are optional
 
@@ -116,7 +116,7 @@ Adds an expense to the list of expenses tracked by the application.
 The expense must have a name, date and amount.
 #### **_PARAMETERS_**
 `/n EXPENSE_NAME` : Name of the expense. <br>
-`/d DATE` : Date of the expense in the format dd-MM-yyyy. <br>
+`/d DATE` : Date of the expense in the format DD-MM-YYYY. <br>
 `/a AMOUNT` : Amount of the expense. Must be a float/integer value, either 0 or 2 decimal places. 
 the integer portion of the amount is limited to 7 digits <br>
 #### **_OPTIONAL PARAMETERS_**
@@ -150,7 +150,7 @@ Example of deleting the first expense: <br>
 ```dtd
 delete /i 1
 ```
-Example of deleting the 5th expense: <br>
+Example of deleting the fifth expense: <br>
 ```dtd
 delete /i 5
 ```
@@ -191,9 +191,9 @@ are provided, will summarise all expenses tracked by the application. Any extran
 `/n NAME` : Expenses need to have this `NAME` to be summarised <br>
 `/c CATEGORY` : Expenses need to have this `CATEGORY` to be summarised <br>
 `/start START_DATE` : Expenses from this `START_DATE` onwards (inclusive) or till the end date (if specified)
-will be summarised. Must be in the format `dd-MM-yyyy`. <br>
+will be summarised. Must be in the format `DD-MM-YYYY`. <br>
 `/end END_DATE` : Expenses up to this `END_DATE` (inclusive) or from the start date (if specified) will be summarised.
-Must be in the format `dd-MM-yyyy`. <br>
+Must be in the format `DD-MM-YYYY`. <br>
 `/from BEGIN_INDEX` : Expenses from this `BEGIN_INDEX` onwards (inclusive) will be summarised. Must be positive integer.
 If not provided, will summarise from start of list <br>
 `/to END_INDEX` : Expenses up to this `END_INDEX` (inclusive) will be  summarised. Must be positive integer.
@@ -241,7 +241,7 @@ event /n EVENT_NAME /d EVENT_DESCRIPTION
 ```
 #### **_DESCRIPTION_**
 Adds an event to group expenses together. This is to be used
-in conjunction with `addExpenseToEvent` to add expenses to the event.
+in conjunction with `addExEv` to add expenses to the event.
 #### **_PARAMETERS_**
 `/n EVENT_NAME` : Name of the event. <br>
 `/d EVENT_DESCRIPTION` : Description of the event. <br>
@@ -260,7 +260,7 @@ listEvents
 
 #### **_DESCRIPTION_**
 Lists all events tracked by the application. Each event has an index associated with it.
-This index can be used to add expenses to the event using the `addExpenseToEvent` command.
+This index can be used to add expenses to the event using the `addExEv` command.
 
 #### **_USAGE_**
 Example of usage: <br>
@@ -283,7 +283,7 @@ deleteEvent /i INDEX
 ```
 #### **_DESCRIPTION_**
 Delete an event that you no longer wish to track. To delete
-an event, you must first delete the expenses associated with the event using `deleteExpenseFromEvent`.
+an event, you must first delete the expenses associated with the event using `delExEv`.
 #### **_PARAMETERS_**
 `/i INDEX` : Index of the event to be deleted. <br>
 
@@ -349,8 +349,9 @@ output:
 Party Woohoo! (Bob's birthday)
 Event has 2 expenses.
 Total amount spent = $35.00
-Pizza $25.00 (Monday, 08 April 2024)
-Soda $10.00 (Monday, 08 April 2024)
+
+1. Pizza $25.00 (Monday, 08 April 2024)
+2. Soda $10.00 (Monday, 08 April 2024)
 ------------------------------------
 ```
 <div style="page-break-after: always;"></div>

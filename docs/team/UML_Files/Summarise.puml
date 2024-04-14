@@ -1,13 +1,14 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+box Summarise
+
 skinparam Style strictuml
-autonumber
 actor User
-participant UI << class >>
+participant ":ui" as UI
 participant ":Logic" as Logic
 activate Logic
-participant ":GeneralInputParser" as GeneralInputParser
+participant GeneralInputParser <<class>>
 participant SummariseParser << class >>
 
 participant ":SummariseCommand" as SummariseCommand order 28
@@ -18,7 +19,7 @@ participant ":ExpenseManager" as ExpenseManager order 31
 Logic -> UI ++ : getUserInput()
 
 User -> UI : userInput
-UI --> Logic : userInput
+UI --> Logic -- : userInput
 
 Logic -> GeneralInputParser ++ : getCommandFromUserInput(userInput)
 GeneralInputParser -> SummariseParser ++ : parseInput(userInput)
@@ -33,37 +34,40 @@ else else
 end
 
 SummariseParser --> GeneralInputParser -- : commandToExecute
-GeneralInputParser --> Logic -- : command
+GeneralInputParser --> Logic -- : commandToExecute
 
-alt command.instanceOf(SummariseCommand)
-    Logic -> SummariseCommand -- : execute(...)
+alt commandToExecute.instanceOf(SummariseCommand)
+    Logic -> SummariseCommand : execute(...)
     activate SummariseCommand
     SummariseCommand -> Dashboard ++ : getExpenseManager()
     Dashboard --> SummariseCommand -- : ExpenseManager
     SummariseCommand -> ExpenseManager ++ : summariseExpenses(...)
     ExpenseManager -> ExpenseManager ++ : getExpensesToSummarise(...)
-    ExpenseManager -> ExpenseManager -- : expensesToSummarise
+    ExpenseManager --> ExpenseManager -- : expensesToSummarise
     alt expensesToSummarise.isEmpty()
         ExpenseManager -> UI : prettyPrint("Nothing to summarise!")
-        UI -> User : "Nothing to summarise!"
+        activate UI
+        UI --> User -- : "Nothing to summarise!"
     else else
-        ExpenseManager -> UI : prettyPrint(summarisedExpensesListString)
-        UI -> User : summarisedExpensesListString
+        ExpenseManager -> UI ++ : prettyPrint(summarisedExpensesListString)
+        UI --> User -- : summarisedExpensesListString
     end
     ExpenseManager --> SummariseCommand -- : summary
     SummariseCommand -> UI -- : prettyPrint(summary)
+    activate UI
     destroy SummariseCommand
-    UI --> User : summary
-else command.instanceOf(InvalidCommand)
-    Logic -> InvalidCommand -- : execute(...)
+    UI --> User -- : summary
+else commandToExecute.instanceOf(InvalidCommand)
+    Logic -> InvalidCommand : execute(...)
     activate InvalidCommand
     InvalidCommand -> UI -- : prettyPrint(errorMessage)
+    activate UI
     destroy InvalidCommand
-    UI --> User : errorMessage
+    UI --> User -- : errorMessage
 end
 deactivate UI
 
-
+endbox
 
 
 

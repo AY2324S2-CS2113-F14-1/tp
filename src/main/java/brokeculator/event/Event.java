@@ -107,7 +107,8 @@ public class Event implements Saveable {
     public String listExpenses(ExpenseManager expenseManager) {
         StringBuilder sb = new StringBuilder();
         for (Expense expense : expenses) {
-            sb.append(expenseManager.getExpenseIndex(expense)).append(". ").append(expense).append(System.lineSeparator());
+            sb.append(expenseManager.getExpenseIndex(expense)).append(". ")
+                      .append(expense).append(System.lineSeparator());
         }
         return sb.toString();
     }
