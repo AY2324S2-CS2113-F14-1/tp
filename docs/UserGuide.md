@@ -369,6 +369,9 @@ application startup.
 objects reliant on the corrupted entry, ie) an expense that is associated with a corrupted category, some modifications
 to the dependent objects will be made ie) the category of the expense will be set to null.
 
+**Q**: Why can I add duplicate expenses and events? 
+
+**A**: To address users' privacy concerns, we do not check users' data. 
 
 ## Command Summary
 

@@ -16,7 +16,7 @@ public class ListParser {
      * @return ListCommand if user input is valid, InvalidCommand otherwise.
      */
     public static Command parseInput(String userInput) {
-        String[] userInputAsArray = userInput.split(" ");
+        String[] userInputAsArray = userInput.split("\\s+");
         int amountToList = 0;
         if (userInputAsArray.length == 1) {
             amountToList = LIST_ALL_EXPENSES;

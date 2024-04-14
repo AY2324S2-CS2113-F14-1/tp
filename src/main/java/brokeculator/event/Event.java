@@ -3,6 +3,7 @@ package brokeculator.event;
 import java.util.ArrayList;
 
 import brokeculator.expense.Expense;
+import brokeculator.expense.ExpenseManager;
 import brokeculator.expense.Saveable;
 import brokeculator.parser.util.Keyword;
 import brokeculator.parser.util.OrderParser;
@@ -103,10 +104,10 @@ public class Event implements Saveable {
      *
      * @return a string representation of all expenses in the event for printing.
      */
-    public String listExpenses() {
+    public String listExpenses(ExpenseManager expenseManager) {
         StringBuilder sb = new StringBuilder();
         for (Expense expense : expenses) {
-            sb.append(expense).append(System.lineSeparator());
+            sb.append(expenseManager.getExpenseIndex(expense)).append(". ").append(expense).append(System.lineSeparator());
         }
         return sb.toString();
     }

@@ -6,8 +6,8 @@ box Category Command Logic
 participant ":Logic   " as logic
 participant "<<class>>\nCategoryParser" as CategoryParser
 participant "<<class>>\nCategory" as Category
-participant ":CategoryCommand" as CategoryCommand
-participant ":InvalidCommand" as InvalidCommand
+participant "commandToExecute:CategoryCommand" as CategoryCommand
+participant "commandToExecute:InvalidCommand" as InvalidCommand
 participant "<<class>>\nGeneralInputParser" as generalinputparser
 activate logic
 logic -> generalinputparser : getCommandFromUserInput(userInput:String)
@@ -15,38 +15,38 @@ activate generalinputparser
 generalinputparser -> CategoryParser : parseInput(userInput:String)
 activate CategoryParser
 
-alt validAddCommand || validDeleteCommand || validListCommand
+alt isValidAddCommand || isValidDeleteCommand || isValidListCommand
     create CategoryCommand
     CategoryParser -> CategoryCommand : new CategoryCommand(...)
     activate CategoryCommand
-    CategoryCommand -[dashed]-> CategoryParser: commandToExecute:Command
+    CategoryCommand -[dashed]-> CategoryParser: commandToExecute
     deactivate CategoryCommand
 else default
     create InvalidCommand
     CategoryParser -> InvalidCommand : new InvalidCommand()
     activate InvalidCommand
-    InvalidCommand -[dashed]-> CategoryParser: commandToExecute:InvalidCommand
+    InvalidCommand -[dashed]-> CategoryParser: commandToExecute
     deactivate InvalidCommand
 end
-CategoryParser -[dashed]-> generalinputparser : commandToExecute:Command
+CategoryParser -[dashed]-> generalinputparser : commandToExecute
 deactivate CategoryParser
-generalinputparser -[dashed]-> logic : commandToExecute:Command
+generalinputparser -[dashed]-> logic : commandToExecute
 deactivate generalinputparser
 alt CategoryCommand
-    logic -> CategoryCommand : execute()
+    logic -> CategoryCommand : execute(dashboard, ui)
     activate CategoryCommand
     alt subcommand.equals("add")
-        CategoryCommand -> Category : addCategory()
+        CategoryCommand -> Category : addCategory(categoryString, ui)
         activate Category
         Category -[dashed]-> CategoryCommand: feedback:String
         deactivate Category
     else subcommand.equals("delete")
-        CategoryCommand -> Category : deleteCategory()
+        CategoryCommand -> Category : deleteCategory(categoryString, ui)
         activate Category
         Category -[dashed]-> CategoryCommand: feedback:String
         deactivate Category
     else subcommand.equals("list")
-        CategoryCommand -> Category : listCategories()
+        CategoryCommand -> Category : listCategories(ui)
         activate Category
         Category -[dashed]-> CategoryCommand: feedback:String
         deactivate Category
@@ -55,7 +55,7 @@ alt CategoryCommand
     deactivate CategoryCommand
     destroy CategoryCommand
 else InvalidCommand
-    logic -> InvalidCommand : execute()
+    logic -> InvalidCommand : execute(dashboard, ui)
     activate InvalidCommand
     InvalidCommand -> InvalidCommand : printErrorMessage()
     activate InvalidCommand

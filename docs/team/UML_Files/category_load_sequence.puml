@@ -5,7 +5,7 @@ participant ":Logic" as logic
 participant "<<class>>\nCategory" as category
 participant ":FileManager" as fileManager
 participant "<<class>>\nGeneralFileParser" as generalFileParser
-participant ":AddCategoryFromFileCommand" as AddCategoryFromFileCommand
+participant "command:AddCategoryFromFileCommand" as AddCategoryFromFileCommand
 
 activate logic
 
@@ -16,7 +16,7 @@ logic -> fileManager: openCategoryFile()
 activate fileManager
 fileManager -[dashed]-> logic: hasFileErrors: boolean
 deactivate fileManager
-    alt !hasFileErrors
+    opt !hasFileErrors
     else
         logic -> fileManager : getNextLine()
         activate fileManager
@@ -32,9 +32,9 @@ deactivate fileManager
             create AddCategoryFromFileCommand
             generalFileParser -> AddCategoryFromFileCommand: new AddCategoryFromFileCommand ("add", line)
             activate AddCategoryFromFileCommand
-            AddCategoryFromFileCommand --> generalFileParser: command:AddCategoryFromFileCommand
+            AddCategoryFromFileCommand --> generalFileParser: command
             deactivate AddCategoryFromFileCommand
-            generalFileParser --> logic : command:AddCategoryFromFileCommand
+            generalFileParser --> logic : command
             deactivate generalFileParser
             logic -> AddCategoryFromFileCommand : execute(..)
             activate AddCategoryFromFileCommand

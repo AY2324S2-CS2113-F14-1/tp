@@ -7,7 +7,8 @@ public class GeneralInputParser {
     public static Command getCommandFromUserInput(String userInput) {
         Command commandToExecute;
         try {
-            String commandKeyword = userInput.split(" ")[0];
+            userInput = userInput.trim();
+            String commandKeyword = userInput.split("\\s+")[0];
             String normalizedKeyword = commandKeyword.toLowerCase().trim();
             switch (normalizedKeyword) {
             case "add":
