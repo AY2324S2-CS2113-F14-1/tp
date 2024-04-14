@@ -38,7 +38,7 @@ public class AddParser {
             String expenseAmountAsString = getOptionField(userInputAsArray, ADD_COMMAND_OPTIONS[AMOUNT_INDEX]);
             String expenseCategory = null;
 
-            if (userInput.contains(" /c ")) {
+            if (userInput.contains(ADD_COMMAND_OPTIONS[CATEGORY_INDEX])) {
                 expenseCategory = getOptionField(userInputAsArray, ADD_COMMAND_OPTIONS[CATEGORY_INDEX]);
                 expenseCategory = expenseCategory.isBlank() ? null : expenseCategory;
             }
@@ -112,7 +112,9 @@ public class AddParser {
      * @return True if all mandatory fields are present, false otherwise.
      */
     private static boolean isOptionsPresent(String userInput) {
-        return userInput.contains(" /n ") && userInput.contains(" /d ") && userInput.contains(" /a ");
+        return userInput.contains(ADD_COMMAND_OPTIONS[NAME_INDEX])
+                && userInput.contains(ADD_COMMAND_OPTIONS[DATE_INDEX])
+                && userInput.contains(ADD_COMMAND_OPTIONS[AMOUNT_INDEX]);
     }
 
     /**
