@@ -156,6 +156,7 @@ is called to set the dashboard object in the `Category` class.
 This is to allow the `Category` class to access the `ExpenseManager` object stored in the `Dashboard` object.
 
 <div style="page-break-after: always;"></div>
+
 ### Summarising expenses
 **Implementation** <br>
 The expense summarising functionality is mainly facilitated by the `SummariseCommand`and `SummariseParser` classes. 
