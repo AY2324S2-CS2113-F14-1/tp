@@ -6,7 +6,7 @@ expenses. It aims to tackle the challenge they face of managing a myriad of expe
 
 # Table of contents
 * [Summary of contributions](#summary-of-contributions)
-* [Contributions to the Developer Guide (extracts)](#contributions-to-the-developer-guide-extracts)
+
 
 # Summary of contributions
 ## Code contributed 
@@ -55,33 +55,3 @@ due to edge cases not being handled the corresponding parseDouble function.
 - Added instructions on manual testing
 - Added user stories section
 
-<div style="page-break-after: always;"></div>
-
-# Contributions to the developer guide (extracts)
-
-The following images are the class and sequence diagrams created and elaborated on in the
-developer guide:
-
-## Category Class Diagram
-![category_class.png](../images/category_class.png)
-
-
-## Category Parsing Sequence Diagram
-
-![category_parse_sequence.png](../images/category_parse_sequence.png)
-
-## Category Loading Sequence Diagram
-
-![category_load_sequence.png](../images/category_load_sequence.png)
-
-The following snippet is an example of the manual testing instructions provided in the developer guide:
-```dtd
-### Testing of viewing expenses
-
-The user should be able to view the expenses by typing `list` and pressing enter. The user should see the following:
-------------------------------------
-1. test1 $16.00 (Thursday, 12 December 2024)
-2. test2 $20.00 (Thursday, 12 December 2024) [CAT1]
-3. test3 $100.00 (Friday, 12 January 2024) [CAT3]
-------------------------------------
-```
