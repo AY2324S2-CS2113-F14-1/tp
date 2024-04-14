@@ -4,7 +4,6 @@ import brokeculator.command.AddCommand;
 import brokeculator.command.Command;
 import brokeculator.command.InvalidCommand;
 import brokeculator.enumerators.CommandErrorMessages;
-import brokeculator.event.Event;
 import brokeculator.expense.Expense;
 import brokeculator.storage.parsing.FileKeyword;
 

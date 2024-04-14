@@ -1,6 +1,5 @@
 package brokeculator.enumerators;
 
-import brokeculator.command.InvalidCommand;
 import brokeculator.dashboard.Dashboard;
 import brokeculator.event.Event;
 import brokeculator.expense.Expense;
