@@ -14,7 +14,7 @@ public class CategoryParser {
         String[] userInputAsArray = userInput.trim().split("\\s+");
         if (userInputAsArray.length < 2) {
             return new InvalidCommand("Please specify a subcommand." + System.lineSeparator()
-                    + "Format: category <subcommand: list|add|delete> <string_value>");
+                    + "Format: category <subcommand: list|add|delete> <string_value_if_add_or_delete_specified>");
         }
         boolean isAddSubcommand = userInputAsArray[SUBCOMMAND_INDEX].equals(ADD_SUBCOMMAND)
                                   && userInputAsArray.length > 2;
@@ -33,6 +33,7 @@ public class CategoryParser {
         if (isListSubcommand) {
             return new CategoryCommand(LIST_SUBCOMMAND);
         }
-        return new InvalidCommand("Invalid category command");
+        return new InvalidCommand("Invalid category command" + System.lineSeparator()
+                + "Format: category <subcommand: list|add|delete> <string_value_if_add_or_delete_specified>");
     }
 }
