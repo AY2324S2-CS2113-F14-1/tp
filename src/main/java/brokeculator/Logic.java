@@ -29,7 +29,7 @@ public class Logic {
                 command.execute(dashboard, ui);
                 saveFiles();
             } catch (BrokeculatorException b) {
-                ui.prettyPrint("Brokeculator error occurred. " + b.getMessage());
+                ui.prettyPrint("Input not recognized! Please try again.");
             } catch (Exception e) {
                 ui.prettyPrint("Oops, your command is not recognized!. ");
             }
