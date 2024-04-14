@@ -107,7 +107,8 @@ public class ExpenseManager {
         } else {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < expensesToSummarise.size(); i++) {
-                sb.append(i + 1).append(". ").append(expensesToSummarise.get(i)).append(System.lineSeparator());
+                int expenseIndex = getExpenseIndex(expensesToSummarise.get(i));
+                sb.append(expenseIndex).append(". ").append(expensesToSummarise.get(i)).append(System.lineSeparator());
             }
             String summarisedExpensesListString = String.valueOf(sb);
             ui.prettyPrint(summarisedExpensesListString);
