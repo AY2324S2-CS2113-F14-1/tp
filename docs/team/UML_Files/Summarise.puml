@@ -1,10 +1,11 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+box Summarise
+
 skinparam Style strictuml
-autonumber
 actor User
-participant "ui" as UI
+participant ":ui" as UI
 participant ":Logic" as Logic
 activate Logic
 participant GeneralInputParser <<class>>
@@ -66,7 +67,7 @@ else commandToExecute.instanceOf(InvalidCommand)
 end
 deactivate UI
 
-
+endbox
 
 
 
