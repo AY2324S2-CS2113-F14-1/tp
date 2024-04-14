@@ -16,7 +16,7 @@ logic -> fileManager: openCategoryFile()
 activate fileManager
 fileManager -[dashed]-> logic: hasFileErrors: boolean
 deactivate fileManager
-    alt !hasFileErrors
+    opt !hasFileErrors
     else
         logic -> fileManager : getNextLine()
         activate fileManager

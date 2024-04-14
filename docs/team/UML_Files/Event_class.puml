@@ -9,7 +9,7 @@ class Event {
     + hasExpense(expense : Expense) : boolean
     + addExpense(expense : Expense) : void
     + removeExpense(expense : Expense) : void
-    + listExpenses() : String
+    + listExpenses(expenseManager : ExpenseManager) : String
 }
 
 class EventManager {

@@ -38,10 +38,11 @@
 * [JLine](https://github.com/jline/jline3)
 
 <div style="page-break-after: always;"></div>
+
 ## Design
 
 ### Architecture
-![img.png](images/architecture.png)
+![img.png](images/architecture.png) <br>
 The **Architecture Diagram** given above explains the high-level design of the App.\
 Given below is a quick overview of main components and how they interact with each other.
 
@@ -105,6 +106,7 @@ Without loss of generality, the high-level execution flow of the application is 
 8. The `UI` class prints feedback, if any, to the user
 
 <div style="page-break-after: always;"></div>
+
 ## Implementation
 This section describes the implementation details of selected features of the Brokeculator application.
 
@@ -123,6 +125,7 @@ The `Category` class is supplemented by the following classes to interact with t
 - `CategoryParser` It is responsible for parsing the user input
 
 <div style="page-break-after: always;"></div>
+
 The UML diagram below shows the main relationships between the classes in the category feature.
 ![category_class.png](images/category_class.png)
 <br>
@@ -130,7 +133,7 @@ The UML diagram below shows the main relationships between the classes in the ca
 <div style="page-break-after: always;"></div>
 
 The Following sequence diagram shows how a user input is processed to add, delete or list the categories:
-![category_parse_sequence.png](images/category_parse_sequence.png)
+![category_parse_sequence.png](images/category_sequence.png)
 <br>
 **User input category parsing sequence**
 1. The user enters a command to add a category
@@ -138,7 +141,7 @@ The Following sequence diagram shows how a user input is processed to add, delet
 depending on whether the user input is valid or not
 3. The returned Command object is executed by the Logic Class
 4. The appropriate method in the `Category` class is called to add the category, based on how the constructor
-of the `CategoryCommand` object was called. result of the command would be returned from the `Category` class
+of the `CategoryCommand` object was called. Result of the command would be returned from the `Category` class
 to the `CategoryCommand` object, which would then be printed by the `UI` class to be viewed by the user (printing 
 omitted from sequence diagram for brevity)
 

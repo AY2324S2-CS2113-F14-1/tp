@@ -12,22 +12,22 @@ class Dashboard {
 }
 abstract class command {
     --
-    + execute(dashboard: Dashboard): void
+    + execute(dashboard: Dashboard, ui : UI): void
 }
 class CategoryCommand {
-    - subcommand: string
-    - categoryString: string
+    - subcommand: String
+    - categoryString: String
     --
-    + CategoryCommand(subcommand: string, categoryString: string)
-    + CategoryCommand(subcommand: string)
+    + CategoryCommand(subcommand: String, categoryString: String)
+    + CategoryCommand(subcommand: String)
     + execute(dashboard: Dashboard): void
    }
 class AddCategoryFromFileCommand {
     --
-    + execute(dashboard: Dashboard): void
+    + execute(dashboard: Dashboard, ui : UI): void
 }
 class CategoryParser {
-    + parseInput (userInput: string): Command
+    + parseInput (userInput: String): Command
 }
 class GeneralFileParser
 class Category {

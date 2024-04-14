@@ -42,7 +42,7 @@ public class ViewSingleEventCommand extends Command {
                 + "Event has " + expenseCount + " expenses. " + System.lineSeparator()
                 + "Total amount spent = $" + String.format("%.2f", total) + System.lineSeparator()
                 + System.lineSeparator()
-                + event.listExpenses();
+                + event.listExpenses(dashboard.getExpenseManager());
         ui.prettyPrint(string);
     }
 }
