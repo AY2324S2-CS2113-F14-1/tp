@@ -3,8 +3,10 @@ package brokeculator.parser;
 import brokeculator.command.AddEventCommand;
 import brokeculator.command.Command;
 import brokeculator.command.InvalidCommand;
+import brokeculator.event.Event;
 import brokeculator.parser.util.Keyword;
 import brokeculator.parser.util.OrderParser;
+import brokeculator.storage.parsing.FileKeyword;
 
 public class EventParser {
     private static final Keyword[] KEYWORDS = {
@@ -27,6 +29,14 @@ public class EventParser {
         }
         String eventName = userInputs[0];
         String eventDescription = userInputs[1];
+
+        boolean doesNameContainDelimiters =
+                Event.hasFileDelimiters(eventName) || FileKeyword.hasFileDelimiters(eventName);
+        boolean doesDescriptionContainDelimiters =
+                Event.hasFileDelimiters(eventDescription) || FileKeyword.hasFileDelimiters(eventDescription);
+        if (doesNameContainDelimiters || doesDescriptionContainDelimiters ){
+            return new InvalidCommand("Input has file delimiters");
+        }
         return new AddEventCommand(eventName, eventDescription);
     }
 }

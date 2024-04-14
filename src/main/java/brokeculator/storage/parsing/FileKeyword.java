@@ -5,9 +5,16 @@ import java.util.Map;
 public class FileKeyword {
 
     private static final Map<SaveableType, String> FILE_KEYWORDS = Map.of(
-        SaveableType.EXPENSE, "--expense--", SaveableType.CATEGORY, "--category--", 
+        SaveableType.EXPENSE, "--expense--", SaveableType.CATEGORY, "--category--",
         SaveableType.EVENT, "--event--", SaveableType.CONNECTION, "--connection--"
     );
+
+    public static boolean hasFileDelimiters (String userInput) {
+        return userInput.contains(FILE_KEYWORDS.get(SaveableType.EXPENSE)) ||
+                userInput.contains(FILE_KEYWORDS.get(SaveableType.EVENT)) ||
+                userInput.contains(FILE_KEYWORDS.get(SaveableType.CATEGORY)) ||
+                userInput.contains(FILE_KEYWORDS.get(SaveableType.CONNECTION));
+    }
 
     /**
      * Formats the string representation of a saveable object with the keyword

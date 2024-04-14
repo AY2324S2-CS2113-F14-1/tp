@@ -5,6 +5,7 @@ import brokeculator.command.Command;
 import brokeculator.command.InvalidCommand;
 import brokeculator.enumerators.CommandErrorMessages;
 import brokeculator.expense.Expense;
+import brokeculator.storage.parsing.FileKeyword;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -36,14 +37,25 @@ public class AddParser {
             String expenseDateString = getOptionField(userInputAsArray, ADD_COMMAND_OPTIONS[DATE_INDEX]);
             String expenseAmountAsString = getOptionField(userInputAsArray, ADD_COMMAND_OPTIONS[AMOUNT_INDEX]);
             String expenseCategory = null;
+
             if (userInput.contains(" /c ")) {
                 expenseCategory = getOptionField(userInputAsArray, ADD_COMMAND_OPTIONS[CATEGORY_INDEX]);
                 expenseCategory = expenseCategory.isBlank() ? null : expenseCategory;
             }
+
             String inputFieldsErrorMessage =
                     craftErrorMessage(expenseDescription, expenseDateString, expenseAmountAsString);
             if (!inputFieldsErrorMessage.isBlank()) {
                 return new InvalidCommand(inputFieldsErrorMessage);
+            }
+
+            boolean doesDescriptionContainDelimiters =
+                    Expense.hasFileDelimiters(expenseDescription) || FileKeyword.hasFileDelimiters(expenseDescription);
+            boolean doesCategoryContainDelimiters = expenseCategory != null &&
+                    (Expense.hasFileDelimiters(expenseCategory) || FileKeyword.hasFileDelimiters(expenseCategory));
+
+            if (doesCategoryContainDelimiters || doesDescriptionContainDelimiters) {
+                return new InvalidCommand("Input has file delimiters");
             }
 
             double expenseAmount = Double.parseDouble(expenseAmountAsString);

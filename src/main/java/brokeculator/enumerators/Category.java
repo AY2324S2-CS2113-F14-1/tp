@@ -1,6 +1,7 @@
 package brokeculator.enumerators;
 
 import brokeculator.dashboard.Dashboard;
+import brokeculator.event.Event;
 import brokeculator.expense.Expense;
 import brokeculator.storage.parsing.FileKeyword;
 import brokeculator.storage.parsing.SaveableType;
@@ -38,6 +39,10 @@ public class Category {
         category = category.toUpperCase();
         if (categories.contains(category)) {
             return "Category already exists";
+        }
+        if (Expense.hasFileDelimiters(category) ||
+            FileKeyword.hasFileDelimiters(category) || Event.hasFileDelimiters(category)) {
+            return "Category contains file delimiters";
         }
         categories.add(category);
         return "Category added: " + category;
