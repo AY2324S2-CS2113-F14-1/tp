@@ -654,7 +654,7 @@ eventtest2 (test 2)
 Event has 1 expense.
 Total amount spent = $20.00 
 
-test2 $20.00 (Thursday, 12 December 2024) [CAT1]
+2. test2 $20.00 (Thursday, 12 December 2024) [CAT1]
 ------------------------------------
 ```
 The user should be able to view the expenses in the third event by typing `viewEvent /i 3` and pressing enter. The user should see
