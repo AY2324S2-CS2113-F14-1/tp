@@ -19,13 +19,13 @@ import brokeculator.parser.util.OrderParser;
 public class Expense implements Saveable {
 
     private static final Keyword DESCRIPTION_KEYWORD =
-            new Keyword("|__EXPENSE_DESCRIPTION__|:", "expense description", false);
+            new Keyword("|_!#$%_EXPENSE_DESCRIPTION_|}{%_|:", "expense description", false);
     private static final Keyword DATE_KEYWORD =
-            new Keyword("|__EXPENSE_DATE__|:", "expense date", false);
+            new Keyword("|_~^*&>_EXPENSE_DATE_>?+(_|:", "expense date", false);
     private static final Keyword AMOUNT_KEYWORD =
-            new Keyword("|__EXPENSE_AMOUNT__|:", "expense amount", false);
+            new Keyword("|_#$^(&_EXPENSE_AMOUNT_:<>*^_|:", "expense amount", false);
     private static final Keyword CATEGORY_KEYWORD =
-            new Keyword("|__EXPENSE_CATEGORY__|:", "expense category", true);
+            new Keyword("|_=-$&)_EXPENSE_CATEGORY_<?*@}_|:", "expense category", true);
     private static final Keyword[] SAVING_KEYWORDS
             = {DESCRIPTION_KEYWORD, DATE_KEYWORD, AMOUNT_KEYWORD, CATEGORY_KEYWORD};
 

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class EventExpenseManager {
 
-    private static final Keyword EXPENSE_KEYWORD = new Keyword("|__EXPENSE__|:", "expense", false);
-    private static final Keyword EVENT_KEYWORD = new Keyword("|__EVENT__|:", "event", false);
+    private static final Keyword EXPENSE_KEYWORD = new Keyword("|_':}_EXPENSE_|}=_|:", "expense", false);
+    private static final Keyword EVENT_KEYWORD = new Keyword("|_%^*_EVENT_<>?_|:", "event", false);
     private static final Keyword[] CONNECTION_KEYWORDS = {EXPENSE_KEYWORD, EVENT_KEYWORD};
 
     private final EventManager eventManager;

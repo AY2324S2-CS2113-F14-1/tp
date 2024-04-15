@@ -11,9 +11,9 @@ import brokeculator.parser.util.OrderParser;
 public class Event implements Saveable {
 
     private static final Keyword NAME_KEYWORD
-            = new Keyword("|__EVENT_NAME__|:", "event name", false);
+            = new Keyword("|_)!*_EVENT_NAME_?<:_|:", "event name", false);
     private static final Keyword DESCRIPTION_KEYWORD
-            = new Keyword("|__EVENT_DESCRIPTION__|:", "event description", false);
+            = new Keyword("|_+_}_EVENT_DESCRIPTION_~!@_|:", "event description", false);
     private static final Keyword[] SAVING_KEYWORDS = {NAME_KEYWORD, DESCRIPTION_KEYWORD};
 
     private final String eventName;
