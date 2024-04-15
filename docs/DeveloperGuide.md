@@ -590,36 +590,8 @@ This section details how to do manual testing of the application. The following 
 All data files should reside in the data folder, in the directory that the user has launched the application from.
 The following are to be done in sequence to test reliability of loading data:
 
-**Loading of category data** <br>
-In the data folder, create a file named `category.txt` and populate it with the following data:
-```dtd
---category--CAT3
---category--CAT2
---category--CAT1
-```
-
-**Loading of expense data** <br>
-In the data folder, create a file named `data.txt` and populate it with the following data:
-```dtd
---expense--|__EXPENSE_DESCRIPTION__|:test1|__EXPENSE_DATE__|:12-12-2024|__EXPENSE_AMOUNT__|:16.00
---expense--|__EXPENSE_DESCRIPTION__|:test2|__EXPENSE_DATE__|:12-12-2024|__EXPENSE_AMOUNT__|:20.00|__EXPENSE_CATEGORY__|:CAT1
---expense--|__EXPENSE_DESCRIPTION__|:test3|__EXPENSE_DATE__|:12-01-2024|__EXPENSE_AMOUNT__|:100.00|__EXPENSE_CATEGORY__|:CAT3
-```
-
-**Loading of event data** <br>
-In the data folder, create a file named `event.txt` and populate it with the following data:
-```dtd
---event--|__EVENT_NAME__|:eventtest|__EVENT_DESCRIPTION__|:test 1
---event--|__EVENT_NAME__|:eventtest2|__EVENT_DESCRIPTION__|:test 2
---event--|__EVENT_NAME__|:eventtest3|__EVENT_DESCRIPTION__|:test 3
-```
-
-**Loading of event connections data** <br>
-In the data folder, create a file named `connection.txt` and populate it with the following data:
-```dtd
---connection--|__EXPENSE__|:1|__EVENT__|:1
---connection--|__EXPENSE__|:2|__EVENT__|:2
-```
+Download our test data [here](https://github.com/AY2324S2-CS2113-F14-1/tp/tree/master/docs/testData) <br>
+Copy the entire data folder to the location of your JAR file. 
 
 Start the application by running the `Brokeculator.jar` file in the same directory as the data file. 
 The application should load the data from the files and the user should see the following:
@@ -670,14 +642,18 @@ The user should be able to view the events by typing `listEvents` and pressing e
 The user should be able to view the expenses in the first event by typing `viewEvent /i 1` and pressing enter. The user should see the following:
 ```dtd
 eventtest (test 1)
-Event has 1 expenses:
-test1 $16.00 (Thursday, 12 December 2024)
+Event has 1 expense.
+Total amount spent = $16.00
+
+1. test1 $16.00 (Thursday, 12 December 2024)
 ```
 The user should be able to view the expenses in the second event by typing `viewEvent /i 2` and pressing enter. The user should see the following:
 ```dtd
 ------------------------------------
 eventtest2 (test 2)
-Event has 1 expenses:
+Event has 1 expense.
+Total amount spent = $20.00 
+
 test2 $20.00 (Thursday, 12 December 2024) [CAT1]
 ------------------------------------
 ```
@@ -810,7 +786,7 @@ upon typing `viewEvent /i 3` and pressing enter, the user should see the followi
 ```dtd
 ------------------------------------
 eventtest3 (test 3)
-Event has 1 expenses. 
+Event has 1 expense. 
 Total amount spent = $100.00
 
 3. test3 $100.00 (Friday, 12 January 2024) [CAT3]
