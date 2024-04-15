@@ -43,10 +43,14 @@ experienced CLI users, they can enter their expenses faster compared to GUI appl
 #### Contributions beyond the project team
 - Created 7 bug reports during the PE dry run.
 
+<div style="page-break-after: always;"></div>
+
 ### Contributions to the Developer Guide (Extracts)
 
 #### Architecture Diagram
 ![img.png](../images/architecture.png)
+
+<div style="page-break-after: always;"></div>
 
 #### Example use case
 > **Use case: Add a category**
