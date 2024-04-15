@@ -4,15 +4,10 @@
 Brokeculator is a CLI application designed for university students to log and view their
 expenses. It aims to tackle the challenge they face of managing a myriad of expenses across various categories.
 
-# Table of contents
-* [Summary of contributions](#summary-of-contributions)
-
-
-# Summary of contributions
-## Code contributed 
+### Code contributed 
 [RepoSense_link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=yeozhishen&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2024-02-23&tabOpen=true&tabType=authorship&tabAuthor=yeozhishen&tabRepo=AY2324S2-CS2113-F14-1%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
 
-## Features implemented
+### Features implemented
 ### 1. Main Logic
 The main logic class is used to handle the main logic of the program. It is responsible for handling the flow
 of the program and calling the respective classes to handle the user input and calling the load save function.
