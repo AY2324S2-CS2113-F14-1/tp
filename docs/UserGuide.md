@@ -54,6 +54,16 @@ experienced CLI users, they can enter their expenses faster compared to GUI appl
 > 3. Words in `UPPER_CASE` are parameters to be supplied by the user
 > 4. Parameters in square brackets are optional
 
+> **WARNINGS**
+> 1. Do not manually edit the data files located in the data folder of the application. 
+    Corrupted entries may have a significant ripple effect on the data integrity of the application.
+> 2. By using this application, you acknowledge and accept the risk of potential data corruption 
+    due to manual editing of data files. 
+> 3. Please be informed that Brokeculator restricts the use of custom file delimiters in user inputs. 
+    These delimiters are specially designed strings unlikely to be naturally present in users' input. 
+    Any detected instances will be considered a malicious attempt to compromise the application's data integrity 
+    and will consequently be blocked.
+
 <div style="page-break-after: always;"></div>
 
 ### 1. Handling categories: category
