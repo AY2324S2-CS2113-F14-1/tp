@@ -31,7 +31,7 @@ public class Logic {
             } catch (BrokeculatorException b) {
                 ui.prettyPrint("Input not recognized! Please try again.");
             } catch (Exception e) {
-                ui.prettyPrint("Oops, your command is not recognized!. ");
+                ui.prettyPrint("Oops, your command is not recognized!");
             }
         }
     }

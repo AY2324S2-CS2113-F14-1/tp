@@ -23,7 +23,7 @@ public class AddExpenseFromFileCommand extends Command{
             Expense expense = Expense.getExpenseFromFile(this.fileString);
             dashboard.getExpenseManager().add(expense);
         } catch (Exception e) {
-            ui.println(e.toString());
+            ui.prettyPrint(this.fileString + " is corrupted");
         }
     }
 }
