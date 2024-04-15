@@ -37,9 +37,10 @@ public class ViewSingleEventCommand extends Command {
             return;
         }
 
+        String countString = expenseCount > 1 ? " expenses. " : " expense. ";
         double total = event.getTotalExpenses();
         String string = event + System.lineSeparator()
-                + "Event has " + expenseCount + " expenses. " + System.lineSeparator()
+                + "Event has " + expenseCount + countString + System.lineSeparator()
                 + "Total amount spent = $" + String.format("%.2f", total) + System.lineSeparator()
                 + System.lineSeparator()
                 + event.listExpenses(dashboard.getExpenseManager());
